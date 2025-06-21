@@ -8,7 +8,7 @@ const App = () => {
   const [form, setForm] = useState({ title: "", description: "", assignedTo: "", status: "pending" });
 
   const fetchTasks = async () => {
-    const res = await axios.get("http://localhost:5000/api/tasks");
+    const res = await axios.get("https://cn-assignment.onrender.com/api/tasks");
     setTasks(res.data);
   };
 
@@ -18,18 +18,18 @@ const App = () => {
 
   const handleCreate = async () => {
     if (!form.title || !form.description || !form.assignedTo) return;
-    await axios.post("http://localhost:5000/api/tasks", form);
+    await axios.post("https://cn-assignment.onrender.com/api/tasks", form);
     setForm({ title: "", description: "", assignedTo: "", status: "pending" });
     fetchTasks();
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`https://cn-assignment.onrender.com/api/tasks/${id}`);
     fetchTasks();
   };
 
   const handleUpdate = async (id, data) => {
-    await axios.put(`http://localhost:5000/api/tasks/${id}`, data);
+    await axios.put(`https://cn-assignment.onrender.com/api/tasks/${id}`, data);
     fetchTasks();
   };
 
